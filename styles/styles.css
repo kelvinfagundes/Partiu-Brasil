@@ -65,7 +65,9 @@ section {
 }
 
 
-
+.conteudo h2{
+    text-align: center;
+}
 
 
 .conteudo {
@@ -84,7 +86,7 @@ section {
 
 
 .eventos {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     justify-items: center;
@@ -113,7 +115,7 @@ section {
 
 
 .proximo {
-    display: grid;
+    display: inline-block;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 16px;
 }
