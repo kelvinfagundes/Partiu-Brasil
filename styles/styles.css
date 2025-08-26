@@ -142,3 +142,14 @@ footer p {
     font-size: 12px;
     color: gray;
 }
+
+.rodape a{
+    color: gray;
+    text-decoration: none;
+}
+
+.rodape a:hover{
+    color: black;
+    text-decoration: underline;
+}
+
