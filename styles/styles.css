@@ -64,6 +64,10 @@ section {
     padding: 0 16px;
 }
 
+section h2{
+    text-align: center;
+}
+
 
 .conteudo h2{
     text-align: center;
@@ -151,5 +155,40 @@ footer p {
 .rodape a:hover{
     color: black;
     text-decoration: underline;
+}
+
+.contato {
+    margin-top:10px ;
+    text-align: center;
+    padding: 0;
+}
+
+.contato li {
+    /* display: inline-block; */
+    list-style: none;
+    /* margin-left: 16px; */
+}
+
+.contato a { 
+    background-color: #25D366;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.contato a:hover {
+    background-color: #1ebe5b;
+}
+
+.contato img{
+    width: 20px;
+    height: 20px;
 }
 
