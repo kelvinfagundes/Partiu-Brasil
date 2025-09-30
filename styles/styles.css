@@ -54,6 +54,23 @@ nav a {
     border: 1px solid white;
 }
 
+nav a.instagram-menu {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    padding: 16px; 
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+nav a.instagram-menu:hover {
+    filter: brightness(1.1);
+}
+
 nav a:hover {
     background-color: rgba(0, 0, 0, .5);
 }
@@ -157,19 +174,19 @@ footer p {
     text-decoration: underline;
 }
 
-.contato {
+/* .contato {
     margin-top:10px ;
     text-align: center;
     padding: 0;
-}
+} */
 
 .contato li {
     /* display: inline-block; */
-    list-style: none;
+    list-style: none; 
     /* margin-left: 16px; */
 }
 
-.contato a { 
+/* .contato a { 
     background-color: #25D366;
   padding: 10px 20px;
   display: inline-flex;
@@ -181,13 +198,36 @@ footer p {
   font-weight: bold;
   border-radius: 6px;
   transition: background 0.3s ease;
-}
+} */
 
-.contato a:hover {
+/* .contato a:hover {
     background-color: #1ebe5b;
+} */
+
+/* .contato img{
+    width: 20px;
+    height: 20px;
+} */
+
+.instagram-direct {
+    background: #405DE6; /* cor padrão do Direct Instagram */
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s ease;
 }
 
-.contato img{
+.instagram-direct:hover {
+    filter: brightness(1.1);
+}
+
+.instagram-direct img {
     width: 20px;
     height: 20px;
 }
