@@ -17,6 +17,26 @@
     gtag('js', new Date());
 
     gtag('config', 'G-8RW0B9ZKQW');
+
+    function alternarDetalhes(idElemento, botao) {
+
+            const detalhes = document.getElementById(idElemento);
+
+            if (detalhes.style.display === 'none' || detalhes.style.display === '') {
+                detalhes.style.display = 'block';
+                botao.textContent = 'Ver Menos';
+            } else {
+                detalhes.style.display = 'none';
+                botao.textContent = 'Saiba Mais';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const itensParaEsconder = document.querySelectorAll('.detalhes-escondidos');
+            itensParaEsconder.forEach(item => {
+                item.style.display = 'none';
+            });
+        });
     </script>
 </head>
 
@@ -61,15 +81,18 @@
                     <p>Reserva somente mediante ao sinal de R$100,00; 
                     R$ 100,00 deverá ser pago até o dia 10/10; 
                     ⚠️ Não faremos devolução em caso de desistência, pois os valores serão repassados para agendamento do salto e transporte.</p>
-                    <h4>➡️ Confira as condições especiais para o nosso grupo (mínimo 10 pessoas):</h4>
-                    <ul>
-                        <li>Fun: De R$655 Por R$590</li>
-                        <li>Selfie: De R$759 Por R$694</li>
-                        <li>Vip: De R$1189 Por R$1124</li>
-                        <li>Black: De R$1619 Por R$1554</li>
-                    </ul>            
-                    <p>Valores por pessoa reservando até o final de agosto. 👆🏼</p>
-                    <p>Obs.: A escolha e pagamento do seu pacote é realizado no dia do salto e o valor de R$ 100 antecipado na sua reserva, referente ao agendamento, será descontado do valor do pacote escolhido.</p>
+                    <div id="detalhes-paraquedas" class="detalhes-escondidos"> 
+                        <h4>➡️ Confira as condições especiais para o nosso grupo (mínimo 10 pessoas):</h4>
+                        <ul>
+                            <li>Fun: De R$655 Por R$590</li>
+                            <li>Selfie: De R$759 Por R$694</li>
+                            <li>Vip: De R$1189 Por R$1124</li>
+                            <li>Black: De R$1619 Por R$1554</li>
+                        </ul>            
+                        <p>Valores por pessoa reservando até o final de agosto. 👆🏼</p>
+                        <p>Obs.: A escolha e pagamento do seu pacote é realizado no dia do salto e o valor de R$ 100 antecipado na sua reserva, referente ao agendamento, será descontado do valor do pacote escolhido.</p>
+                    </div>
+                     <button onclick="alternarDetalhes('detalhes-paraquedas', this)" class="btn-saiba-mais">Saiba Mais</button>
                     <ul class="contato">
                         <li>
                             <!-- <a href="https://wa.me/5511999999999" target="_blank">
@@ -93,19 +116,21 @@
                 R$ 200,00 até o final de agosto 
                 R$ 200,00 até o final de setembro </p>
                 <p>O que está incluso nesse valor?</p>
-                <ul>
-                    <li>Transporte de ida e volta 🚌</li>
-                    <li>Embarques: terminal Grajaú, estação st Amaro e Barra funda </li>
-                    <li>Almoço delicioso para recarregar as energias (bebida a parte).</li>
-                    <li>Day use com muita aventura:</li>
-                    <li>Rafting 🛶</li>
-                    <li>Trilha na lama 🏞️</li>
-                    <li>Caiaque 🛶</li>
-                    <li>Slackline 🤸‍♀️</li>
-                    <li>Stand up paddle 🏄‍♀️</li>
-                </ul>
-                <p>E muito mais!
-                As vagas são limitadas, então não perca tempo. Confirme sua presença e garanta sua vaga nessa aventura!</p>
+                <div id="detalhes-rafting" class="detalhes-escondidos">
+                    <ul>
+                        <li>Transporte de ida e volta 🚌</li>
+                        <li>Embarques: terminal Grajaú, estação st Amaro e Barra funda </li>
+                        <li>Almoço delicioso para recarregar as energias (bebida a parte).</li>
+                        <li>Day use com muita aventura:</li>
+                        <li>Rafting 🛶</li>
+                        <li>Trilha na lama 🏞️</li>
+                        <li>Caiaque 🛶</li>
+                        <li>Slackline 🤸‍♀️</li>
+                        <li>Stand up paddle 🏄‍♀️</li>
+                    </ul>
+                    <p>E muito mais!As vagas são limitadas, então não perca tempo. Confirme sua presença e garanta sua vaga nessa aventura!</p>
+                </div>
+                <button onclick="alternarDetalhes('detalhes-rafting', this)" class="btn-saiba-mais">Saiba Mais</button>
                 <ul class="contato">
                         <li>
                             <!-- <a href="https://wa.me/5511999999999" target="_blank">
