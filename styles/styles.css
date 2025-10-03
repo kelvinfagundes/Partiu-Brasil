@@ -122,10 +122,21 @@ section h2{
 }
 
 .grid-eventos{
-    display: grid;
+    /* display: grid; */
+    column-count: 3;
+    column-gap: 16px;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;  
     justify-items: center;
+    padding: 16px;
+}
+
+.grid-eventos img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+    display: block;
+    break-inside: avoid;
 }
 
 .grid-proximo{
@@ -160,7 +171,7 @@ section h2{
 
 footer p {
     text-align: center;
-    font-size: 12px;
+    font-size: 20px;
     color: gray;
 }
 
