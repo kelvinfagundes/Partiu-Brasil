@@ -2,43 +2,115 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Partiu Brasil - Excursões e Aventuras</title>
-    <meta name="description" content="descrição legal da minha página">
-    <meta name="author" content="Kelvin Fagundes Pereira">
-    <meta name="keywords" content="html, css, javascript">
+  <meta charset="UTF-8">
+  <title>Partiu Brasil - Excursões e Aventuras</title>
+  <meta name="description" content="descrição legal da minha página">
+  <meta name="author" content="Kelvin Fagundes Pereira">
+  <meta name="keywords" content="html, css, javascript">
+  <link rel="stylesheet" href="styles/styles.css">
 
-    <link rel="stylesheet" href="styles/styles.css">
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RW0B9ZKQW"></script>
-    <script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RW0B9ZKQW"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-8RW0B9ZKQW');
+  </script>
+</head>
 
+<script>
     function alternarDetalhes(idElemento, botao) {
-
-            const detalhes = document.getElementById(idElemento);
-
-            if (detalhes.style.display === 'none' || detalhes.style.display === '') {
-                detalhes.style.display = 'block';
-                botao.textContent = 'Ver Menos';
-            } else {
-                detalhes.style.display = 'none';
-                botao.textContent = 'Saiba Mais';
-            }
+        const detalhes = document.getElementById(idElemento);
+        if (detalhes.style.display === 'none' || detalhes.style.display === '') {
+            detalhes.style.display = 'block';
+            botao.textContent = 'Ver Menos';
+        } else {
+            detalhes.style.display = 'none';
+            botao.textContent = 'Saiba Mais';
         }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializa a função de Saiba Mais/Ver Menos, escondendo os detalhes
+        const itensParaEsconder = document.querySelectorAll('.detalhes-escondidos');
+        itensParaEsconder.forEach(item => {
+            item.style.display = 'none';
+        });
+
+        // --- SCRIPT DO CARROSSEL (Com Indicadores de Posição) ---
+        const slidesContainer = document.querySelector('.carousel .slides');
+        const slides = document.querySelectorAll('.carousel .slide');
+        const indicatorsContainer = document.querySelector('.carousel-indicators'); // NOVO: Indicadores
         
-        document.addEventListener('DOMContentLoaded', () => {
-            const itensParaEsconder = document.querySelectorAll('.detalhes-escondidos');
-            itensParaEsconder.forEach(item => {
-                item.style.display = 'none';
+        if (!slides.length || !slidesContainer || !indicatorsContainer) return; 
+
+        let index = 0;
+        
+        // 1. Funções de Indicador
+        const indicators = [];
+        slides.forEach((_, i) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('indicator');
+            indicatorsContainer.appendChild(indicator);
+            indicators.push(indicator);
+
+            // Permite clicar nas bolinhas para navegar
+            indicator.addEventListener('click', () => {
+                index = i;
+                show(index);
+                clearInterval(timer); // Reseta o timer
+                timer = setInterval(next, 4000);
             });
         });
-    </script>
-</head>
+
+        // 2. Função de Atualização da Interface
+        function updateUI(i) {
+            // Atualiza a posição do slide
+            slidesContainer.style.transform = `translateX(-${i * 100}%)`;
+            
+            // Atualiza a bolinha ativa
+            indicators.forEach(ind => ind.classList.remove('active'));
+            indicators[i].classList.add('active');
+        }
+
+        // 3. Função de Próximo Slide
+        function next(){
+            const isLastSlide = index === slides.length - 1;
+            
+            if (isLastSlide) {
+                // Chegou na última imagem: reseta instantaneamente para a primeira (sem transição)
+                slidesContainer.classList.add('no-transition');
+                index = 0;
+                updateUI(index);
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        slidesContainer.classList.remove('no-transition');
+                    });
+                });
+            } else {
+                // Transição suave normal
+                index++;
+                updateUI(index);
+            }
+        }
+
+        // Inicializa o primeiro estado (slide 0 e primeira bolinha ativa)
+        updateUI(0);
+
+        // Troca automática
+        let timer = setInterval(next, 4000);
+
+        // Pausa o carrossel quando o mouse passa por cima
+        const carousel = document.querySelector('.carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => clearInterval(timer));
+            carousel.addEventListener('mouseleave', () => timer = setInterval(next, 4000));
+        }
+        // FIM DO SCRIPT DO CARROSSEL
+    });
+</script>
 
 <body>
     <header>
@@ -68,80 +140,45 @@
 
         <div class="conteudo">
             <section class="proximo">
-            <h2>Próximos Eventos</h2>            
-            <div class="grid-proximo">
-                <article>
-                    <img src="imagens/paraquedas.jpeg" alt="pulo de parequedas">
-                    <img src="imagens/paraquedas1.jpeg" alt="pulo de paraquedas 2">
-                    <img src="imagens/paraquedas2.jpeg" alt="galera do paraquedas">
-                    <h3>Salto de Paraquedas</h3>
-                    <p>Data: 23/11/25
-                    R$ 220,00 por pessoa - Este valor cobre R$ 100 para o agendamento do salto e R$ 120 referente ao transporte.</p>
-                    <h5>Formas de Pagamento:</h5>
-                    <p>Reserva somente mediante ao sinal de R$100,00; 
-                    R$ 100,00 deverá ser pago até o dia 10/10; 
-                    ⚠️ Não faremos devolução em caso de desistência, pois os valores serão repassados para agendamento do salto e transporte.</p>
-                    <div id="detalhes-paraquedas" class="detalhes-escondidos"> 
-                        <h4>➡️ Confira as condições especiais para o nosso grupo (mínimo 10 pessoas):</h4>
-                        <ul>
-                            <li>Fun: De R$655 Por R$590</li>
-                            <li>Selfie: De R$759 Por R$694</li>
-                            <li>Vip: De R$1189 Por R$1124</li>
-                            <li>Black: De R$1619 Por R$1554</li>
-                        </ul>            
-                        <p>Valores por pessoa reservando até o final de agosto. 👆🏼</p>
-                        <p>Obs.: A escolha e pagamento do seu pacote é realizado no dia do salto e o valor de R$ 100 antecipado na sua reserva, referente ao agendamento, será descontado do valor do pacote escolhido.</p>
+                <h2>Próximos Eventos</h2>            
+                    <div class="grid-proximo">
+                        <article>
+                            <img src="imagens/paraquedas.jpeg" alt="pulo de parequedas">
+                            <img src="imagens/paraquedas1.jpeg" alt="pulo de paraquedas 2">
+                            <img src="imagens/paraquedas2.jpeg" alt="galera do paraquedas">
+                            <h3>Salto de Paraquedas</h3>
+                            <p>Data: 23/11/25
+                            R$ 220,00 por pessoa - Este valor cobre R$ 100 para o agendamento do salto e R$ 120 referente ao transporte.</p>
+                            <h5>Formas de Pagamento:</h5>
+                            <p>Reserva somente mediante ao sinal de R$100,00; 
+                            R$ 100,00 deverá ser pago até o dia 10/10; 
+                            ⚠️ Não faremos devolução em caso de desistência, pois os valores serão repassados para agendamento do salto e transporte.</p>
+                            <div id="detalhes-paraquedas" class="detalhes-escondidos"> 
+                                <h4>➡️ Confira as condições especiais para o nosso grupo (mínimo 10 pessoas):</h4>
+                                <ul>
+                                    <li>Fun: De R$655 Por R$590</li>
+                                    <li>Selfie: De R$759 Por R$694</li>
+                                    <li>Vip: De R$1189 Por R$1124</li>
+                                    <li>Black: De R$1619 Por R$1554</li>
+                                </ul>            
+                                <p>Valores por pessoa reservando até o final de agosto. 👆🏼</p>
+                                <p>Obs.: A escolha e pagamento do seu pacote é realizado no dia do salto e o valor de R$ 100 antecipado na sua reserva, referente ao agendamento, será descontado do valor do pacote escolhido.</p>
+                            </div>
+                            <button onclick="alternarDetalhes('detalhes-paraquedas', this)" class="btn-saiba-mais">Saiba Mais</button>
+                            <ul class="contato">
+                                <li>
+                                    <!-- <a href="https://wa.me/5511999999999" target="_blank">
+                                    <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" alt="WhatsApp">
+                                    Fale no WhatsApp
+                                    </a> -->
+                                    <a href="https://www.instagram.com/partiubrasil.oficial/" target="_blank" class="instagram-direct"><img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram Direct">Direct no Instagram</a>
+                                </li>
+                            </ul>
+                        </article>
                     </div>
-                     <button onclick="alternarDetalhes('detalhes-paraquedas', this)" class="btn-saiba-mais">Saiba Mais</button>
-                    <ul class="contato">
-                        <li>
-                            <!-- <a href="https://wa.me/5511999999999" target="_blank">
-                            <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" alt="WhatsApp">
-                            Fale no WhatsApp
-                            </a> -->
-                            <a href="https://www.instagram.com/partiubrasil.oficial/" target="_blank" class="instagram-direct"><img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram Direct">Direct no Instagram</a>
-                        </li>
-                    </ul>
-                </article>
-                <article>
-                    <img src="imagens/rafting.jpeg" alt="banner rafting">
-                    <img src="imagens/rafting1.jpeg" alt="atividades rafting">
-                    <img src="imagens/rafting2.jpeg" alt="descida de rafting">
-                    <h3>Rafting em Juquitiba</h3>
-                <p>Data: 05/10/25
-                Valor: apenas R$ 450,00 por pessoa.</p>
-                <h5>Formas de Pagamentos </h5>
-                <p>Facilitamos o pagamento em até 3x sem juros:
-                Sinal de reserva R$ 50,00
-                R$ 200,00 até o final de agosto 
-                R$ 200,00 até o final de setembro </p>
-                <p>O que está incluso nesse valor?</p>
-                <div id="detalhes-rafting" class="detalhes-escondidos">
-                    <ul>
-                        <li>Transporte de ida e volta 🚌</li>
-                        <li>Embarques: terminal Grajaú, estação st Amaro e Barra funda </li>
-                        <li>Almoço delicioso para recarregar as energias (bebida a parte).</li>
-                        <li>Day use com muita aventura:</li>
-                        <li>Rafting 🛶</li>
-                        <li>Trilha na lama 🏞️</li>
-                        <li>Caiaque 🛶</li>
-                        <li>Slackline 🤸‍♀️</li>
-                        <li>Stand up paddle 🏄‍♀️</li>
-                    </ul>
-                    <p>E muito mais!As vagas são limitadas, então não perca tempo. Confirme sua presença e garanta sua vaga nessa aventura!</p>
-                </div>
-                <button onclick="alternarDetalhes('detalhes-rafting', this)" class="btn-saiba-mais">Saiba Mais</button>
-                <ul class="contato">
-                        <li>
-                            <!-- <a href="https://wa.me/5511999999999" target="_blank">
-                            <img src="https://img.icons8.com/ios-filled/20/ffffff/whatsapp.png" alt="WhatsApp">
-                            Fale no WhatsApp</a> -->
-                            <a href="https://www.instagram.com/partiubrasil.oficial/" target="_blank" class="instagram-direct"><img src="https://img.icons8.com/ios-filled/20/ffffff/instagram-new.png" alt="Instagram Direct">Direct no Instagram</a>
-                        </li>
-                    </ul>
-                </article>
-            </div>
-            </section>
+               </section> 
+            
+            
 
             <section class="eventos">
                 <h2>Eventos Realizados</h2>                
@@ -153,14 +190,31 @@
                     <img src="imagens/mega_tirolesa4.jpeg" alt="foto da galera">
                     <img src="imagens/mega_tirolesa5.jpeg" alt="foto da galera">
                     <img src="imagens/mega_tirolesa6.jpeg" alt="foto da galera">
-                    <img src="imagens/mega_tirolesa7.jpeg" alt="foto da galera">
-                    <img src="imagens/mega_tirolesa8.jpeg" alt="foto da galera">
-                    <img src="imagens/mega_tirolesa9.jpeg" alt="foto da galera">
-                    <img src="imagens/mega_tirolesa10.jpeg" alt="foto da galera">
-                    <img src="imagens/mega_tirolesa11.jpeg" alt="foto da galera">                      
+                    <img src="imagens/rafiting05-10-25.1.jpeg" alt="foto da galera">
+                    <img src="imagens/rafiting05-10-25.3.jpeg" alt="foto da galera">
+                    <img src="imagens/rafiting05-10-25.2.jpeg" alt="foto da galera">
+                    <img src="imagens/rafiting05-10-25.4.jpeg" alt="foto da galera">
+                    <img src="imagens/rafiting05-10-25.5.jpeg" alt="foto da galera">                      
                 </div>          
             </section>
         </div>
+    <section class="feedback">
+  <h2>O que dizem sobre nós</h2>
+
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide"><img src="imagens/feedback.1.jpeg" alt="Comentário 1"></div>
+      <div class="slide"><img src="imagens/feedback.2.jpeg" alt="Comentário 2"></div>
+      <div class="slide"><img src="imagens/feedback.3.jpeg" alt="Comentário 3"></div>
+      <div class="slide"><img src="imagens/feedback.4.jpeg" alt="Comentário 4"></div>
+      <div class="slide"><img src="imagens/feedback.5.jpeg" alt="Comentário 5"></div>
+    </div>
+
+    <div class="carousel-indicators">
+
+    </div>
+  </div>
+</section>
     <footer>
         <p>   <a href="https://www.instagram.com/partiubrasil.oficial/" target="_blank">📸 Instagram</a></p>
 

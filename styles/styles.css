@@ -129,6 +129,7 @@ section h2{
     /* gap: 16px;   */
     /* justify-items: center; */
     padding: 16px;
+    
 }
 
 .grid-eventos img {
@@ -276,3 +277,76 @@ footer p {
         column-count: 1;
     }
 }
+
+.feedback {
+  padding: 40px 16px;
+  background: #f4f4f4;
+}
+
+.feedback h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.carousel {
+  width: 90%;
+  max-width: 720px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  position: relative;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px; /* Distância da parte inferior */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o contêiner */
+    z-index: 10;
+    display: flex;
+    gap: 8px; /* Espaço entre as bolinhas */
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5); /* Cor clara e transparente */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.3); /* Contorno sutil */
+}
+
+.indicator.active {
+    background-color: #dc2743; /* Cor do Instagram (um dos tons) para destaque */
+    transform: scale(1.2); /* Deixa a bolinha ativa um pouco maior */
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.no-transition {
+    transition: none;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  object-fit: contain; /* mostra a imagem inteira */
+  border-radius: 8px;
+}
+
