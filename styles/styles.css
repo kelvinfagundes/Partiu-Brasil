@@ -6,6 +6,10 @@ body {
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 .hero {
     background-image: url(../imagens/Logo.png);
     height: 300px;
@@ -26,6 +30,13 @@ body {
     font-size: 20px;
     text-shadow: 1px 1px 1px gray;
     margin: 5px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin: 20px;
 }
 
 
@@ -350,3 +361,63 @@ footer p {
   border-radius: 8px;
 }
 
+
+
+/* --- ESTILOS GERAIS DA GALERIA --- */
+#galeria {
+    padding: 30px 16px;
+    background-color: #f4f4f4; /* Fundo mais claro para contraste */
+}
+
+#galeria h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #333;
+}
+
+/* --- GRID MODERNO E RESPONSIVO --- */
+.grid-galeria {
+    display: grid;
+    /* Colunas que se ajustam, com um mínimo de 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px; /* Espaço uniforme entre as imagens */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- ESTILO DO ITEM DA GALERIA (O LINK) --- */
+.grid-galeria a {
+    display: block;
+    position: relative;
+    overflow: hidden; /* Importante para que o zoom não vaze */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: box-shadow 0.3s ease;
+}
+
+/* --- ESTILO DA IMAGEM --- */
+.grid-galeria img {
+    width: 100%;
+    /* Define uma altura consistente para todos os quadrados */
+    height: 250px; 
+    object-fit: cover; /* Recorta para cobrir a área sem distorcer */
+    transition: transform 0.4s ease-in-out; /* Prepara a transição do zoom */
+    display: block;
+}
+
+/* --- EFEITO DE SOFISTICAÇÃO (HOVER) --- */
+.grid-galeria a:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+}
+
+.grid-galeria a:hover img {
+    transform: scale(1.08); /* Efeito de zoom sutil e elegante */
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+@media (max-width: 600px) {
+    .grid-galeria {
+        grid-template-columns: 1fr; /* Uma única coluna em telas muito pequenas */
+    }
+}
