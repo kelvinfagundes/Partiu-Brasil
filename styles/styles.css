@@ -481,4 +481,357 @@ footer p {
     right: 0;
 }
 
+/* RESPONSIVIDADE DA GALERIA */
+@media (max-width: 1024px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-galeria {
+        grid-template-columns: 1fr; /* Uma coluna no celular */
+        gap: 10px;
+    }
+
+    .grid-galeria img {
+        height: auto; /* Ajusta altura automática para celular */
+    }
+
+    h3 {
+        font-size: 18px; /* Ajuste do título para celular */
+    }
+}
+
+/* RESPONSIVIDADE DO MODAL */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 70%;
+    }
+
+    .prev, .next {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 30px;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 100%;
+        max-height: 60%;
+    }
+
+    .prev, .next {
+        font-size: 24px;
+        padding: 8px;
+    }
+
+    .close {
+        font-size: 24px;
+        top: 8px;
+        right: 12px;
+    }
+
+    #caption {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* RESPONSIVIDADE DO MENU */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 12px;
+        font-size: 12px;
+    }
+}
+
+/* RESPONSIVIDADE DO CABEÇALHO */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+        text-align: center;
+        padding: 10px;
+    }
+
+    nav a {
+        padding: 10px;
+        font-size: 11px;
+    }
+}
+
+/* GALERIA RESPONSIVA */
+@media (max-width: 1024px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-galeria img {
+        height: auto;
+    }
+}
+/* MODAL RESPONSIVO */
+.modal-content {
+    width: 90%;
+    max-width: 800px;
+    max-height: 80%;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: 100%;
+        max-height: 70%;
+    }
+
+    .prev, .next {
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .close {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        height: auto;
+        max-height: 60%;
+    }
+
+    .prev, .next {
+        font-size: 24px;
+        padding: 8px;
+    }
+
+    .close {
+        font-size: 24px;
+    }
+}
+
+
+/* MENU RESPONSIVO */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    nav a {
+        padding: 12px;
+        font-size: 12px;
+    }
+}
+
+/* AJUSTES DE TEXTO */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+        padding: 0 10px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        padding: 0 10px;
+    }
+
+    h3 {
+        font-size: 1.2em;
+        padding: 0 10px;
+    }
+
+    section {
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.4em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    nav a {
+        font-size: 10px;
+        padding: 10px;
+    }
+}
+/* GALERIA RESPONSIVA */
+@media (max-width: 1024px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-galeria {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .grid-galeria img {
+        height: 200px; /* Ajusta altura das imagens para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-galeria {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .grid-galeria img {
+        height: auto; /* Imagem ocupa espaço proporcional */
+        max-width: 100%;
+    }
+}
+
+
+/* MODAL RESPONSIVO */
+.modal-content {
+    max-width: 90%;
+    max-height: 80%;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 70%;
+    }
+
+    .close, .prev, .next {
+        font-size: 30px; /* Ícones menores em telas menores */
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        max-width: 100%;
+        max-height: 60%;
+    }
+
+    .close, .prev, .next {
+        font-size: 24px;
+        padding: 8px;
+    }
+
+    .caption {
+        font-size: 14px; /* Texto menor no celular */
+        padding: 5px;
+    }
+}
+
+/* MENU RESPONSIVO */
+nav {
+    flex-wrap: wrap;
+}
+
+nav a {
+    padding: 12px;
+    font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* HEADER RESPONSIVO */
+header h1 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5em;
+        padding: 10px;
+    }
+}
+
+
+/* GALERIA RESPONSIVA */
+.grid-galeria {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* Ajuste da imagem dentro da galeria */
+.grid-galeria img {
+    height: auto;
+    max-height: 250px;
+}
+
+/* MODAL RESPONSIVO */
+.modal-content {
+    max-width: 95%;
+    max-height: 80%;
+}
+
+/* Botões modal responsivos */
+.close, .prev, .next {
+    font-size: 30px;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .close, .prev, .next {
+        font-size: 24px;
+        padding: 8px;
+    }
+}
 
