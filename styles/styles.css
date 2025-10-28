@@ -141,12 +141,10 @@ section h2{
 }
 
 .grid-eventos{
-    /* display: grid; */
-    column-count: 3;
-    column-gap: 16px;
-    /* grid-template-columns: repeat(2, 1fr); */
-    /* gap: 16px;   */
-    /* justify-items: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
     padding: 16px;
     
 }
@@ -856,3 +854,116 @@ header h1 {
     }
 }
 
+/* --- Ajuste para tablets --- */
+@media (max-width: 1024px) {
+    .grid-eventos img {
+        width: 45%; /* 2 por linha */
+        max-width: none;
+    }
+}
+
+/* --- Ajuste para celulares --- */
+@media (max-width: 600px) {
+    .grid-eventos {
+        flex-direction: column; /* coloca uma imagem abaixo da outra */
+        align-items: center;
+    }
+}
+
+/* ===============================
+   MÓDULOS MOBILE: empilha seções
+   =============================== */
+
+/* Alvo: telas pequenas (celular) */
+@media (max-width: 768px) {
+
+  /* 1) Empilha as colunas dentro de .conteudo (Próximos Eventos acima de Eventos Realizados) */
+  .conteudo {
+    display: flex;           /* garante que seja flex (se já não for) */
+    flex-direction: column;  /* empilha verticalmente */
+    gap: 18px;               /* espaço entre as seções */
+    align-items: stretch;    /* faz as seções preencherem a largura disponível */
+  }
+
+  /* 2) Garante que as caixas das seções não causem rolagem interna
+     (algum elemento podia ter overflow:auto) */
+  .proximo,
+  .eventos,
+  .grid-proximo,
+  .grid-eventos {
+    overflow: visible !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 3) Faz as imagens dos eventos ficarem 1 por linha, ocupando quase toda a largura */
+  .grid-eventos {
+    display: flex;
+    flex-direction: column; /* 1 imagem por linha */
+    gap: 12px;
+    padding: 12px;
+    align-items: center;
+  }
+
+  .grid-eventos img {
+    width: 94%;         /* ocupa quase toda largura do conteúdo */
+    max-width: 420px;   /* limita em telas maiores para não estourar */
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /* 4) Ajustes da área "próximos" para não obrigar rolagem:
+     por exemplo: limitar imagens grandes ou forçar auto height */
+  .grid-proximo article,
+  .proximo article {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .proximo img, .grid-proximo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* 5) Remove eventuais margens/paddings que criavam barra extra no fundo */
+  html, body {
+    overflow-x: hidden; /* evita scrollbar horizontal */
+  }
+
+  /* 6) Se houver header/hero muito alto, reduzir um pouco no mobile para evitar rolagem grande */
+  .hero {
+    height: auto;
+    padding: 20px 10px;
+    background-size: contain;
+  }
+}
+
+/* ============================
+   AJUSTE DA HERO PARA CELULAR
+   ============================ */
+@media (max-width: 768px) {
+
+  /* Mantém a logo visível e o texto abaixo */
+  .hero {
+    background-position: center top; /* garante que a logo fique em cima */
+    background-size: contain;        /* adapta a imagem sem cortar */
+    height: auto;                    /* deixa altura flexível */
+    padding: 180px 10px 30px;        /* empurra o texto pra baixo da logo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    background-color: white;         /* fundo branco pra não escurecer a logo */
+  }
+
+  .hero p {
+    margin-top: 20px;
+    font-size: 16px;
+    text-shadow: none;               /* remove a sombra pra leitura melhor */
+    color: #333;
+  }
+}
