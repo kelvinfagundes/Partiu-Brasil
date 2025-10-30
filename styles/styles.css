@@ -305,52 +305,33 @@ footer p {
   margin-bottom: 16px;
 }
 
+/* ====== CARROSSEL (substituir o bloco antigo por este) ====== */
 .carousel {
   width: 90%;
   max-width: 720px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: hidden;               /* esconde partes fora do quadro */
   background: #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.12);
   position: relative;
 }
 
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px; /* Distância da parte inferior */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o contêiner */
-    z-index: 10;
-    display: flex;
-    gap: 8px; /* Espaço entre as bolinhas */
-}
-
-.indicator {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.5); /* Cor clara e transparente */
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    border: 1px solid rgba(0, 0, 0, 0.3); /* Contorno sutil */
-}
-
-.indicator.active {
-    background-color: #dc2743; /* Cor do Instagram (um dos tons) para destaque */
-    transform: scale(1.2); /* Deixa a bolinha ativa um pouco maior */
-}
-
-.slides {
+/* Container de slides: FLEX + transição por transform */
+.carousel .slides {
   display: flex;
-  transition: transform 0.6s ease;
+  width: 100%;
+  transform: translateX(0);
+  transition: transform 600ms ease; /* transição padrão ao mudar slides */
 }
 
-.no-transition {
-    transition: none;
+/* Precisão na classe usada pelo JS para pular transição */
+.carousel .slides.no-transition {
+  transition: none !important;
 }
 
-.slide {
+/* Cada slide ocupa 100% do container */
+.carousel .slide {
   min-width: 100%;
   display: flex;
   justify-content: center;
@@ -359,12 +340,57 @@ footer p {
   box-sizing: border-box;
 }
 
-.slide img {
+/* Imagens do slide - evita gaps e preserva proporção */
+.carousel .slide img {
+  width: 100%;
   max-width: 100%;
   max-height: 420px;
   height: auto;
   object-fit: contain; /* mostra a imagem inteira */
   border-radius: 8px;
+  display: block;      /* evita pequeno gap inline */
+}
+
+/* Indicadores (bolinhas) - posicionado sobre o slider */
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px; /* distância da parte inferior */
+  left: 50%;
+  transform: translateX(-50%); /* centraliza o contêiner */
+  z-index: 10;
+  display: flex;
+  gap: 8px; /* espaço entre as bolinhas */
+  align-items: center;
+}
+
+.carousel-indicators .indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5); /* cor clara e translúcida */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.3); /* contorno sutil */
+  outline: none;
+}
+
+/* estado ativo da bolinha */
+.carousel-indicators .indicator.active {
+  background-color: #dc2743; /* destaque (ex: tom Instagram) */
+  transform: scale(1.2);
+}
+
+/* foco via teclado - torna acessível para quem usa TAB */
+.carousel-indicators .indicator:focus {
+  box-shadow: 0 0 0 3px rgba(0,120,215,0.25);
+}
+
+/* Respeita preferência do usuário por reduzir animações */
+@media (prefers-reduced-motion: reduce) {
+  .carousel .slides,
+  .carousel-indicators .indicator {
+    transition: none !important;
+  }
 }
 
 
