@@ -238,8 +238,8 @@ footer p {
     /* margin-left: 16px; */
 }
 
-/* .contato a { 
-    background-color: #25D366;
+.contato a { 
+  background-color: #25D366;
   padding: 10px 20px;
   display: inline-flex;
   align-items: center;
@@ -250,16 +250,16 @@ footer p {
   font-weight: bold;
   border-radius: 6px;
   transition: background 0.3s ease;
-} */
+} 
 
-/* .contato a:hover {
+ .contato a:hover {
     background-color: #1ebe5b;
-} */
+} 
 
-/* .contato img{
+ .contato img{
     width: 20px;
     height: 20px;
-} */
+}
 
 .instagram-direct {
     background: #405DE6; /* cor padrão do Direct Instagram */
